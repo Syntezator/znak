@@ -1,0 +1,14 @@
+
+.prev{
+  position: fixed;
+  top: 50%;
+  color: white;
+  left: 30%;
+}
+.next{
+  position: fixed;
+  top: 40%;
+  color: white;
+  left: 30%;
+}
+

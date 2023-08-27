@@ -1,0 +1,9 @@
+.vscode
+.idea
+.DS_Store
+/node_modules
+/_notes
+/_temp
+.env
+start.sh
+/.nyc_output
