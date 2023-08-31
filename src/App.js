@@ -13,10 +13,9 @@ import { PageContext } from './components/PageContext';
 function App() {
   
   return (
-    
+    <div className="main">
         <Router>
-          <Navbar/>
-          
+        <Navbar/>
           <Routes>
               <Route path="/" element={<Main/>}></Route>
               <Route path="/page2" element={<Page2/>}></Route>
@@ -24,7 +23,7 @@ function App() {
           </Routes>
           <Cursor/>
         </Router>
-    
+    </div>
       
    
 

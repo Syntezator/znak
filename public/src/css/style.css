@@ -115,7 +115,6 @@ a * {
     max-width: 400px;
     margin: -10px auto 15px;
     padding: 10px;
-    display: none;
 }
 .form-success{
     border: 1px solid white;
@@ -123,7 +122,6 @@ a * {
     max-width: 280px;
     margin: 0 auto;
     margin-bottom: 1rem;
-    display: none;
 }
 .show{
     display: block!important;

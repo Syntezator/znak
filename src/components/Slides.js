@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Form } from './Form';
 
 export function Slides({ slideStyle, handleMouseUp}) {
 
@@ -43,48 +44,7 @@ export function Slides({ slideStyle, handleMouseUp}) {
           <a className="logo" href="#">
             <img className="logo-img" src="./src/img/logo.svg" />
           </a>
-          <form
-            id="main-form"
-            className="main-contacts__form"
-            action="send.php"
-          >
-            <div className="input-row">
-              <div className="input-group">
-                <input
-                  id="main-contacts__name"
-                  className="input-text"
-                  type="text"
-                  name="main-contacts__name"
-                  placeholder="Иванов Петр Яковлевич"
-                  defaultValue=""
-                  required
-                />
-                <label className="input-label" htmlFor="main-contacts__name">
-                  Имя
-                </label>
-              </div>
-              <div className="input-group">
-                <input
-                  id="main-contacts__phone"
-                  className="input-text tel"
-                  type="text"
-                  inputMode="numeric"
-                  name="main-contacts__phone"
-                  placeholder="+7 987 52 54 96"
-                  defaultValue=""
-                  required
-                />
-                <label className="input-label" htmlFor="main-contacts__phone">
-                  Телефон
-                </label>
-              </div>
-            </div>
-            <div className="form-error">Форма содержит ошибки</div>
-            <button className="btn-default" type="submit">
-              Связаться
-            </button>
-            <div className="form-success">Форма успешно отправлена</div>
-          </form>
+          <Form/>
           <div className="post_msg">
             <div className="post_msg__we">
               <span className="color_f">ZNAK</span> - команда опытных

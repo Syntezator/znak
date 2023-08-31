@@ -7,68 +7,54 @@ import { PageContext1 } from '../components/NavigateContext';
 import { Navbar } from '../components/Navbar';
 import Cursor from '../components/Cursor';
 
-
-
 export const Main = () => {
-  const { 
-    translate, 
-    setTranslate, 
-    translate2, 
-    translateNav, 
-    setTranslateNav, 
-    setTranslate2, 
-    handleMouseUp, 
-    changePage, 
-    setChangePage, 
-    pages
-  } = useContext(PageContext);
+  const pageState = useContext(PageContext);
+
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const prevTranslateRef = useRef(translateNav);
+  const prevTranslateRef = useRef(pageState.translateNav);
   
   useEffect(() => {
-    if (translateNav !== prevTranslateRef.current) {
-      setTranslate(translateNav);
-      setTranslate2(-50);
-      prevTranslateRef.current = translateNav;
+    if (pageState.translateNav !== prevTranslateRef.current) {
+      pageState.setTranslate(pageState.translateNav);
+      pageState.setTranslate2(-50);
+      prevTranslateRef.current = pageState.translateNav;
     }
-  }, [translateNav]);
+  }, [pageState.translateNav]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTranslate2(0);
+    const timerId = setTimeout(() => {
+      pageState.setTranslate2(0);
     }, 200);
+    return () => clearTimeout(timerId);
   }, []);
   
   useEffect(() => {
-
-    if (changePage === 'prev') {
-      setChangePage('');
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + pages.length) % pages.length);
-      navigate(pages[(currentIndex - 1 + pages.length) % pages.length]);
+    if (pageState.changePage === 'prev') {
+      pageState.setChangePage('');
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + pageState.pages.length) % pageState.pages.length);
+      navigate(pageState.pages[(currentIndex - 1 + pageState.pages.length) % pageState.pages.length]);
     }
-    if (changePage === 'next') {
-      setChangePage('');
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + pages.length) % pages.length);
-        navigate(pages[(currentIndex + 1) % pages.length]);
+    if (pageState.changePage === 'next') {
+      pageState.setChangePage('');
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + pageState.pages.length) % pageState.pages.length);
+        navigate(pageState.pages[(currentIndex + 1) % pageState.pages.length]);
     }
-  }, [changePage]);
+  }, [pageState.changePage]);
 
   const slideStyle = {
-    transform: `translateX(${translate}%) translateY(0px) translateZ(${translate2}px)`,
+    transform: `translateX(${pageState.translate}%) translateY(0px) translateZ(${pageState.translate2}px)`,
   }; 
 
   return (
-    <div className="main">
-      
+    
       <div className="wrapper">
         <Helmet>
           <title>Main Page</title>
           <meta name="description" content="This is the main page" />
         </Helmet>
-        <Slides slideStyle={slideStyle} handleMouseUp={handleMouseUp} />
+        <Slides slideStyle={slideStyle} handleMouseUp={pageState.handleMouseUp} />
         </div>
    
-    </div>
   )
 }

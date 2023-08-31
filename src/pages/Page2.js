@@ -33,9 +33,11 @@ export function Page2() {
   }, [translateNav]);
 
   useEffect(() => {
-    setTimeout(() => {
+    setTranslate(-100)
+    const timerId = setTimeout(() => {
       setTranslate2(0);
     }, 200);
+    return () => clearTimeout(timerId);
   }, []);
 
   useEffect(() => {   
@@ -54,7 +56,7 @@ export function Page2() {
   }; 
   
   return (
-    <div className="main">
+  
   
     <div className="wrapper">
       <Helmet>
@@ -64,6 +66,6 @@ export function Page2() {
       <Slides slideStyle={slideStyle} handleMouseUp={handleMouseUp} />
       </div>
    
-  </div>
+  
   )
 }
